@@ -26,7 +26,7 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		-- load snippets from path/of/your/nvim/config/my-cool-snippets
-		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/lua/josh/snippets" } })
+		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/josh/snippets" } })
 
 		cmp.setup({
 			completion = {
