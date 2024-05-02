@@ -1,0 +1,104 @@
+{
+  "Math mode": {
+    "prefix": "math",
+    "body": ["\\( $1 \\)"],
+    "descripiton": "Enter math mode"
+  },
+  "Display math mode": {
+    "prefix": "dmath",
+    "body": ["\\[ $1 \\]"],
+    "descripiton": "Enter display math mode"
+  },
+  "Make vector": {
+    "prefix": "vec",
+    "body": ["\\vec{$1}"],
+    "descripiton": "Begin a vector"
+  },
+  "Add Curly Brace": {
+    "prefix": "cb",
+    "body": ["\\{ $1 \\\\}"],
+    "descripiton": "Enter curly braces"
+  },
+  "Begin a proof": {
+    "prefix": "proof",
+    "body": ["\\begin{proof}", "\t$1", "\\end{proof}"],
+    "descripiton": "Enter proof"
+  },
+  "Begin Parenthesis ": {
+    "prefix": "par",
+    "body": ["\\left( $1 \\\\right)"],
+    "descripiton": "Enter parenthesis"
+  },
+  "Begin bmatrix ": {
+    "prefix": "bmat",
+    "body": ["\\begin{bmatrix}", "\t$1", "\\end{bmatrix}"],
+    "descripiton": "Enter bmatrix"
+  },
+  "Make new line": {
+    "prefix": "nl",
+    "body": ["\\\\\\[${1:10}pt]"],
+    "descripiton": "Add a new line"
+  },
+  "Make subsubsection": {
+    "scope": "latex,tex",
+    "prefix": "ss2",
+    "body": ["\\subsubsection*{$1}"],
+    "descripiton": "Make subsubsection"
+  },
+  "Make subsection": {
+    "prefix": "sss",
+    "body": ["\\subsection*{$1}"],
+    "descripiton": "Make subsection"
+  },
+  "Make section": {
+    "prefix": "se",
+    "body": ["\\section*{$1}"],
+    "descripiton": "Make section"
+  },
+  "Make transpose": {
+    "prefix": "trans",
+    "body": ["^\\intercal"],
+    "descripiton": "Make transpose"
+  },
+  "Make frak": {
+    "prefix": "mfrak",
+    "body": ["\\mathfrak{$1}"],
+    "descripiton": "Make frak"
+  },
+  "Make power": {
+    "prefix": "pow",
+    "body": ["^{$1}"],
+    "descripiton": "Make power"
+  },
+  "Make underscore": {
+    "scope": "latex,tex",
+    "prefix": "under",
+    "body": ["_{$1}"],
+    "descripiton": "Make underscore"
+  },
+  "Make square root": {
+    "prefix": "sqrt",
+    "body": ["\\sqrt{$1}"],
+    "descripiton": "Make square root"
+  },
+  "Make fraction": {
+    "prefix": "frac",
+    "body": ["\\frac{$1}{$2}"],
+    "descripiton": "Make square root"
+  },
+  "Make Perp": {
+    "prefix": "perp",
+    "body": ["^\\perp"],
+    "descripiton": "Make transpose"
+  },
+  "Begin Arrows": {
+    "prefix": "angle",
+    "body": ["\\langle $1 \\\\rangle"],
+    "descripiton": "Enter parenthesis"
+  },
+  "Begin Magnitude": {
+    "prefix": "mag",
+    "body": ["||$1||"],
+    "descripiton": "Enter parenthesis"
+  }
+}
