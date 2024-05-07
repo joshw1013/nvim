@@ -13,6 +13,7 @@ return {
 		treesitter.setup({ -- enable syntax highlighting
 			highlight = {
 				enable = true,
+				disable = "latex",
 			},
 			-- enable indentation
 			indent = { enable = true },
@@ -43,7 +44,7 @@ return {
 				"vimdoc",
 				"c",
 				"cpp",
-				"latex",
+				-- "latex",
 			},
 			incremental_selection = {
 				enable = true,
@@ -54,6 +55,7 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
+			ignore_install = { "latex" },
 		})
 	end,
 }

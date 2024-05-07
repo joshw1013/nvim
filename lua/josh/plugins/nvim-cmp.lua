@@ -22,15 +22,18 @@ return {
 
 		local lspkind = require("lspkind")
 
+		-- load snippets from path/of/your/nvim/config/my-cool-snippets
+		-- TODO: Figure out how to add priority for elements from this extension
+		require("luasnip.loaders.from_vscode").lazy_load({
+			paths = { "~/.config/nvim/lua/josh/snippets" },
+		})
+
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
 
-		-- load snippets from path/of/your/nvim/config/my-cool-snippets
-		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/josh/snippets" } })
-
 		cmp.setup({
 			completion = {
-				completeopt = "menu,menuone,preview,noselect",
+				completeopt = "menu,menuone,preview, noselect",
 			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
 				expand = function(args)
@@ -44,13 +47,32 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
-				-- TODO:: Figure out how to autocomplete
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
+
+				-- Don't need the commented out stuff right now
+				-- due to cmp entries
+				--
+				-- LuaSnip commands to jump to next node
+				-- vim.keymap.set({ "i" }, "<C-K>", function()
+				-- luasnip.expand()
+				-- end, { silent = true }),
+				vim.keymap.set({ "i", "s" }, "<C-L>", function()
+					luasnip.jump(1)
+				end, { silent = true }),
+				vim.keymap.set({ "i", "s" }, "<C-H>", function()
+					luasnip.jump(-1)
+				end, { silent = true }),
+
+				-- vim.keymap.set({ "i", "s" }, "<C-E>", function()
+				-- 	if luasnip.choice_active() then
+				-- 		luasnip.change_choice(1)
+				-- 	end
+				-- end, { silent = true }),
 			}),
 			-- sources for autocompletion
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- snippets
+				{ name = "luasnip", priority = 10 }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
 			}),

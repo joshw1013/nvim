@@ -2,99 +2,156 @@
   "Math mode": {
     "prefix": "math",
     "body": ["\\( $1 \\)"],
-    "descripiton": "Enter math mode"
+    "descripiton": "Enter math mode",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Display math mode": {
     "prefix": "dmath",
     "body": ["\\[ $1 \\]"],
-    "descripiton": "Enter display math mode"
+    "descripiton": "Enter display math mode",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make vector": {
     "prefix": "vec",
     "body": ["\\vec{$1}"],
-    "descripiton": "Begin a vector"
+    "descripiton": "Begin a vector",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Add Curly Brace": {
     "prefix": "cb",
     "body": ["\\{ $1 \\\\}"],
-    "descripiton": "Enter curly braces"
+    "descripiton": "Enter curly braces",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Begin a proof": {
     "prefix": "proof",
     "body": ["\\begin{proof}", "\t$1", "\\end{proof}"],
-    "descripiton": "Enter proof"
+    "descripiton": "Enter proof",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Begin Parenthesis ": {
     "prefix": "par",
     "body": ["\\left( $1 \\\\right)"],
-    "descripiton": "Enter parenthesis"
+    "descripiton": "Enter parenthesis",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Begin bmatrix ": {
     "prefix": "bmat",
     "body": ["\\begin{bmatrix}", "\t$1", "\\end{bmatrix}"],
-    "descripiton": "Enter bmatrix"
+    "descripiton": "Enter bmatrix",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make new line": {
     "prefix": "nl",
     "body": ["\\\\\\[${1:10}pt]"],
-    "descripiton": "Add a new line"
+    "descripiton": "Add a new line",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make subsubsection": {
     "scope": "latex,tex",
     "prefix": "ss2",
     "body": ["\\subsubsection*{$1}"],
-    "descripiton": "Make subsubsection"
+    "descripiton": "Make subsubsection",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make subsection": {
     "prefix": "sss",
     "body": ["\\subsection*{$1}"],
-    "descripiton": "Make subsection"
+    "descripiton": "Make subsection",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make section": {
     "prefix": "se",
     "body": ["\\section*{$1}"],
-    "descripiton": "Make section"
+    "descripiton": "Make section",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make transpose": {
     "prefix": "trans",
     "body": ["^\\intercal"],
-    "descripiton": "Make transpose"
+    "descripiton": "Make transpose",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make frak": {
     "prefix": "mfrak",
     "body": ["\\mathfrak{$1}"],
-    "descripiton": "Make frak"
+    "descripiton": "Make frak",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make power": {
     "prefix": "pow",
     "body": ["^{$1}"],
-    "descripiton": "Make power"
+    "descripiton": "Make power",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make underscore": {
     "scope": "latex,tex",
     "prefix": "under",
     "body": ["_{$1}"],
-    "descripiton": "Make underscore"
+    "descripiton": "Make underscore",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make square root": {
     "prefix": "sqrt",
     "body": ["\\sqrt{$1}"],
-    "descripiton": "Make square root"
+    "descripiton": "Make square root",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make fraction": {
     "prefix": "frac",
     "body": ["\\frac{$1}{$2}"],
-    "descripiton": "Make square root"
+    "descripiton": "Make square root",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make Perp": {
     "prefix": "perp",
     "body": ["^\\perp"],
-    "descripiton": "Make transpose"
+    "descripiton": "Make transpose",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Begin Arrows": {
     "prefix": "angle",
     "body": ["\\langle $1 \\\\rangle"],
-    "descripiton": "Enter parenthesis"
+    "descripiton": "Enter parenthesis",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Begin Magnitude": {
     "prefix": "mag",
