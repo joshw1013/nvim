@@ -35,7 +35,6 @@ return {
 				return
 			end
 			local ns = lint.get_namespace(l[1])
-			print(ns)
 			vim.diagnostic.enable(not vim.diagnostic.is_enabled({ ns_id = ns, bufnr = 0 }), { ns_id = ns, bufnr = 0 })
 		end, { desc = "Toggle linter for current buffer", noremap = true }) -- Toggle linter for current buffer
 
