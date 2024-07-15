@@ -38,6 +38,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.scrolloff = 8
 
+-- opt.pumheight = 10 -- Completion height
+
 -- turn off swapfile
 -- I will probably delete this
 -- opt.swapfile = false
