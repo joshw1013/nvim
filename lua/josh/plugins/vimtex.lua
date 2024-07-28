@@ -10,6 +10,9 @@ return {
 			vim.g.vimtex_compiler_method = "latexmk"
 			-- vim.g.maplocalleader = ","
 			-- VimTeX configuration goes here
+			-- Added from Ethan Lu blog on Sioyek with VimTex
+			vim.g.vimtex_callback_progpath = "wsl nvim"
+			-- vim.g.vimtex_view_sioyek_exe = "sioyek.exe"
 		end,
 	},
 }
