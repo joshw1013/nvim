@@ -23,6 +23,7 @@ return {
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				latex = { "latexindent" },
+				verilog = { "verible" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
