@@ -41,6 +41,7 @@ return {
 				"c",
 				"cpp",
 				"latex",
+				"verilog",
 			},
 			incremental_selection = {
 				enable = true,

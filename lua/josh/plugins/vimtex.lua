@@ -12,7 +12,7 @@ return {
 			-- VimTeX configuration goes here
 			-- Added from Ethan Lu blog on Sioyek with VimTex
 			vim.g.vimtex_callback_progpath = "wsl nvim"
-			-- vim.g.vimtex_view_sioyek_exe = "sioyek.exe"
+			-- vim.g.vimtex_view_sioyek_exe = "/mnt/c/Users/joshu/sioyek-release-windows/sioyek.exe"
 		end,
 	},
 }

@@ -38,13 +38,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.scrolloff = 8
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "c",
-	callback = function()
-		vim.opt_local.formatoptions:remove({ "r", "o" })
-	end,
-})
-
 -- opt.pumheight = 10 -- Completion height
 
 -- turn off swapfile
