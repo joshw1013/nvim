@@ -99,6 +99,15 @@ return {
 								callSnippet = "Replace",
 							},
 						},
+						Verible = {
+							filetypes = { "verilog", "systemverilog" }, -- Enable for both Verilog and SystemVerilog
+							root_dir = "/mnt/c/Users/joshu/OneDrive/Documents/EECS270/Lab3/",
+							-- root_dir = function(fname)
+							-- 	return lspconfig.util.root_pattern(".git")(fname)
+							-- 		or lspconfig.util.root_pattern("verilog_project_root")(fname)
+							-- 		or lspconfig.util.path.dirname(fname)
+							-- end,
+						},
 					},
 				})
 			end,
