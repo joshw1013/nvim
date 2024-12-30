@@ -6,6 +6,7 @@ return {
 	config = function()
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+		local diagnostic_status = require("josh.helper.keymaps_tracker") -- to configure diagonistics on / off
 
 		local colors = {
 			blue = "#65D1FF",
@@ -61,10 +62,8 @@ return {
 					local color_name = get_current_colorscheme()
 					-- TODO: Make this if it includes the words tokyonight
 					if color_name == "tokyonight-night" then
-						print("yes")
 						return my_lualine_theme
 					else
-						print("no")
 						return "auto"
 					end
 				end,
@@ -79,6 +78,12 @@ return {
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
 						color = { fg = "#ff9e64" },
+					},
+					{
+						diagnostic_status.update,
+						-- cond = diagnostic_status.has_update,
+						-- cond = true,
+						color = diagnostic_status.color,
 					},
 					{ "encoding" },
 					{ "fileformat" },

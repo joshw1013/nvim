@@ -44,44 +44,8 @@ return {
 
 		-- vim.cmd("colorscheme tokyonight")
 
-		-- Function to load the last used colorscheme with error handling
-		local function load_last_colorscheme()
-			local last_colorscheme_file = vim.fn.expand("~/.config/nvim/last_colorscheme.lua")
-			if vim.fn.filereadable(last_colorscheme_file) == 1 then
-				local success, err = pcall(dofile, last_colorscheme_file)
-				if not success then
-					print("test")
-					print("Error loading last colorscheme: " .. err)
-					vim.cmd("colorscheme tokyonight")
-				end
-			else
-				vim.cmd("colorscheme tokyonight")
-			end
-		end
-		-- Function to save the current colorscheme
-		local function save_colorscheme()
-			local colorscheme = vim.g.colors_name
-			local file = io.open(vim.fn.expand("~/.config/nvim/last_colorscheme.lua"), "w")
-			if file then
-				print("runs")
-				if colorscheme then
-					file:write('vim.cmd("colorscheme ' .. colorscheme .. '")\n')
-				else
-					file:write('vim.cmd("colorscheme tokyonight")\n')
-				end
-				file:close()
-			end
-		end
-
-		-- Load the last used colorscheme on startup
-		load_last_colorscheme()
-
-		-- Auto-command to save the colorscheme whenever it changes
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			pattern = "*",
-			callback = function()
-				save_colorscheme()
-			end,
-		})
+		-- Load the colorscheme here. Required to be after I create custom colorschemes
+		local colorscheme_manager = require("josh.helper.colorscheme_manager")
+		colorscheme_manager.load_last_colorscheme()
 	end,
 }

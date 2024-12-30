@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lint = require("lint")
+		Lint_value = lint
 
 		lint.linters_by_ft = {
 			javascript = { "eslint_d" },
