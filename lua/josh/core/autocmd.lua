@@ -18,3 +18,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.filetype = "html"
 	end,
 })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.v",
+	callback = function()
+		vim.bo.commentstring = "// %s"
+	end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "latex", "tex" },
+	callback = function()
+		print("test")
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = "en_us"
+	end,
+})

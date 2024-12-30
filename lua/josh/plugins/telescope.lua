@@ -29,10 +29,26 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Find git tracked files" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>fd", "<cmd>Telescope lsp_document_symbols({ symbols='function' })<cr>")
 		keymap.set("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Fuzzy find a project" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+		keymap.set("n", "<leader>fmc", "<cmd>Telescope git_commits<cr>", { desc = "Find git commits" })
+		keymap.set("n", "<leader>fmb", "<cmd>Telescope git_branches<cr>", { desc = "Find git branches" })
+		-- Turn preview off if the switching gets annoying
+		keymap.set(
+			"n",
+			"<leader>fms",
+			"<cmd>Telescope colorscheme enable_preview=true <cr>",
+			{ desc = "Change colorscheme" }
+		)
+
+		vim.keymap.set("n", "<leader>fd", function()
+			local builtin = require("telescope.builtin")
+			builtin.lsp_document_symbols({ symbols = "function" })
+		end, { desc = "Find functions in file", noremap = true, silent = true })
 	end,
 }

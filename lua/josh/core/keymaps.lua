@@ -29,3 +29,6 @@ end, { desc = "Toggle Diagnostics for current buffer", noremap = true }) -- Togg
 keymap.set("n", "<leader>la", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle Diagnostics for all buffers", noremap = true }) -- Toggle diagnostics for all buffers
+
+local bind = vim.keymap.set
+bind("n", "<leader>rr", "<cmd>source $HOME/.config/nvim/init.lua <CR>", { desc = "Reload config" })
