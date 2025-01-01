@@ -41,7 +41,8 @@ return {
 				"c",
 				"cpp",
 				"latex",
-				"verilog",
+				-- TODO: Turn on verilog later, when it is working
+				-- "verilog",
 			},
 			incremental_selection = {
 				enable = true,
