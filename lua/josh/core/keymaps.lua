@@ -32,3 +32,7 @@ end, { desc = "Toggle Diagnostics for all buffers", noremap = true }) -- Toggle 
 
 local bind = vim.keymap.set
 bind("n", "<leader>rr", "<cmd>source $HOME/.config/nvim/init.lua <CR>", { desc = "Reload config" })
+
+-- Configure the unnamedplus register (system clipboard)
+keymap.set({ "n", "v", "x", "s" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" }) --  move current buffer to new tab
+keymap.set({ "n", "v", "x", "s" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" }) --  move current buffer to new tab

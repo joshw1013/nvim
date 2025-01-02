@@ -56,7 +56,7 @@ function M.save_colorscheme()
 		local filename = vim.fn.expand("~/.config/nvim/last_colorscheme.lua")
 
 		vim.loop.fs_open(filename, "w", 438, function(err1, fd)
-			if err1 then
+			if err1 or not fd then
 				return
 			end
 
