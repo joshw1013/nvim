@@ -1,7 +1,8 @@
 local M = {}
 
 function M.load_last_colorscheme()
-	local last_colorscheme_file = vim.fn.expand("~/.config/nvim/last_colorscheme.lua")
+	local data_dir = vim.fn.stdpath("data") .. "/colorscheme_manager"
+	local last_colorscheme_file = data_dir .. "/last_colorscheme.lua"
 
 	local handle = vim.loop.fs_open(last_colorscheme_file, "r", 438) -- 438 is octal for 0666
 	if not handle then
@@ -23,6 +24,7 @@ function M.load_last_colorscheme()
 		vim.loop.fs_read(handle, stat.size, 0, function(err2, data)
 			vim.loop.fs_close(handle)
 			if err2 or type(data) == "nil" then
+				print(err2)
 				vim.schedule(function()
 					vim.cmd("colorscheme tokyonight")
 				end)
@@ -50,13 +52,16 @@ end
 
 -- Function to save the current colorscheme asynchronously
 function M.save_colorscheme()
+	local data_dir = vim.fn.stdpath("data") .. "/colorscheme_manager"
+	local filename = data_dir .. "/last_colorscheme.lua"
+	vim.fn.mkdir(data_dir, "p")
 	vim.schedule_wrap(function()
 		local colorscheme = vim.g.colors_name or "tokyonight"
 		local data = 'vim.cmd("colorscheme ' .. colorscheme .. '")\n'
-		local filename = vim.fn.expand("~/.config/nvim/last_colorscheme.lua")
 
 		vim.loop.fs_open(filename, "w", 438, function(err1, fd)
 			if err1 or not fd then
+				print(err1)
 				return
 			end
 
