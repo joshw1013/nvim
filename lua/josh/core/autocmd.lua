@@ -1,5 +1,5 @@
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "c",
+	pattern = { "c", "cpp" },
 	callback = function()
 		vim.opt_local.formatoptions:remove("ro")
 	end,
