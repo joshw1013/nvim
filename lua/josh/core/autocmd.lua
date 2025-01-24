@@ -1,7 +1,10 @@
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "c", "cpp" },
 	callback = function()
-		vim.opt_local.formatoptions:remove("ro")
+		-- Does not work if ro are not consecutive
+		-- vim.opt_local.formatoptions:remove("ro")
+		vim.opt_local.formatoptions:remove("r")
+		vim.opt_local.formatoptions:remove("o")
 	end,
 })
 
