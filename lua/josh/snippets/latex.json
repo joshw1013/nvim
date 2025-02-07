@@ -32,7 +32,7 @@
     }
   },
   "Begin a proof": {
-    "prefix": ["proof"],
+    "prefix": ["pf", "proof"],
     "body": ["\\begin{proof}", "\t$1", "\\end{proof}"],
     "descripiton": "Enter proof",
     "luasnip": {
@@ -40,7 +40,7 @@
     }
   },
   "Begin Parenthesis ": {
-    "prefix": "par",
+    "prefix": ["pa", "par"],
     "body": ["\\left( $1 \\\\right)"],
     "descripiton": "Enter parenthesis",
     "luasnip": {
@@ -148,7 +148,7 @@
   "Begin Arrows": {
     "prefix": ["an", "angle"],
     "body": ["\\langle $1 \\\\rangle"],
-    "descripiton": "Enter parenthesis",
+    "descripiton": "Enter arrows",
     "luasnip": {
       "priority": 2000
     }
@@ -156,6 +156,6 @@
   "Begin Magnitude": {
     "prefix": ["mg", "mag"],
     "body": ["||$1||"],
-    "descripiton": "Enter parenthesis"
+    "descripiton": "Enter magnitude"
   }
 }
