@@ -157,5 +157,20 @@
     "prefix": ["mg", "mag"],
     "body": ["||$1||"],
     "descripiton": "Enter magnitude"
+  },
+  "Make Infinity": {
+    "prefix": ["if"],
+    "body": ["\\infty"],
+    "descripiton": "Make infinity"
+  },
+  "Begin Integral": {
+    "prefix": ["in", "int"],
+    "body": ["\\int_{$1}^{$2}"],
+    "descripiton": "Begin integral"
+  },
+  "Begin Text": {
+    "prefix": ["te"],
+    "body": ["\\text{$1}"],
+    "descripiton": "Begin text"
   }
 }
