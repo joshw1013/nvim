@@ -27,6 +27,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.commentstring = "// %s"
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "c", "cpp" }, -- Use filetypes instead of patterns here
+	callback = function()
+		vim.bo.commentstring = "// %s"
+	end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "latex", "tex" },
 	callback = function()
