@@ -40,3 +40,5 @@ keymap.set({ "n", "v", "x", "s" }, "<leader>y", '"+y', { desc = "Yank to system 
 keymap.set({ "n", "v", "x", "s" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" }) --  move current buffer to new tab
 
 keymap.set("n", "<leader>nw", "<cmd>noa w<CR>", { desc = "Save without formatter" }) --  Don't run autocmds when saving
+keymap.set("n", "<leader>me", "<cmd>FormatEnable<CR>", { desc = "Enable Automatic Formatting" }) --  Don't run autocmds when saving
+keymap.set("n", "<leader>md", "<cmd>FormatDisable<CR>", { desc = "Disable Automatic Formatting" }) --  Don't run autocmds when saving
