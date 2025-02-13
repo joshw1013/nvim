@@ -43,3 +43,44 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.spelllang = "en_us"
 	end,
 })
+
+local function is_same_as_cwd(directory)
+	require("josh.plugins")
+	local Path = require("plenary.path")
+	-- Create a Path object for the given directory
+	local given_path = Path:new(directory)
+	-- Get the current working directory
+	local cwd_path = Path:new(vim.loop.cwd())
+
+	-- Normalize and compare the paths
+
+	-- print(cwd_path:expand())
+	return given_path:expand() == cwd_path:expand()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
+	pattern = "*",
+	callback = function()
+		require("josh.plugins.formatting")
+		-- Add directories here
+		local dirs = { "~/Documents/VSCode/EECS482/p2-thread-library" }
+
+		local match = false
+		for _, dir in ipairs(dirs) do
+			if is_same_as_cwd(dir) then
+				match = true
+			end
+		end
+		if match then
+			vim.opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
+			vim.opt.shiftwidth = 4 -- 4 spaces for indent width
+			-- print("FormatDisable")
+			vim.cmd("FormatDisable")
+		else
+			vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+			vim.opt.shiftwidth = 2 -- 2 spaces for indent width
+			-- print("FormatEnable")
+			vim.cmd("FormatEnable")
+		end
+	end,
+})

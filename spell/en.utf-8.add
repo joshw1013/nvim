@@ -3,7 +3,6 @@ captionsetup
 bibo
 Invariance
 LTI
-<<<<<<< HEAD
 captionsetup
 cashflow
 IRR
@@ -11,9 +10,8 @@ NPV
 WTS
 iff
 tan2
-=======
 invariance
 iff
->>>>>>> c7d5795d9f13f8c435d9a54d01017937807067fe
 Prelab
 radians
+Prelab
