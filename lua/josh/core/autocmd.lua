@@ -62,8 +62,16 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 	pattern = "*",
 	callback = function()
 		require("josh.plugins.formatting")
-		local dir = "~/Documents/VSCode/EECS482/p2-thread-library"
-		if is_same_as_cwd(dir) then
+		-- Add directories here
+		local dirs = { "~/Documents/VSCode/EECS482/p2-thread-library" }
+
+		local match = false
+		for dir in dirs do
+			if is_same_as_cwd(dir) then
+				match = true
+			end
+		end
+		if match then
 			vim.opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
 			vim.opt.shiftwidth = 4 -- 4 spaces for indent width
 			-- print("FormatDisable")
