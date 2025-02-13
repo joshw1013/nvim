@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 		local dirs = { "~/Documents/VSCode/EECS482/p2-thread-library" }
 
 		local match = false
-		for dir in dirs do
+		for _, dir in ipairs(dirs) do
 			if is_same_as_cwd(dir) then
 				match = true
 			end
