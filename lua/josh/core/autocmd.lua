@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-local function is_same_as_cwd(directory)
+local function substring_of_cwd(directory)
 	require("josh.plugins")
 	local Path = require("plenary.path")
 	-- Create a Path object for the given directory
@@ -55,7 +55,9 @@ local function is_same_as_cwd(directory)
 	-- Normalize and compare the paths
 
 	-- print(cwd_path:expand())
-	return given_path:expand() == cwd_path:expand()
+	cwd_path = cwd_path:expand()
+	given_path = given_path:expand()
+	return cwd_path:find(given_path, 1, true) == 1
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
@@ -67,7 +69,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 
 		local match = false
 		for _, dir in ipairs(dirs) do
-			if is_same_as_cwd(dir) then
+			if substring_of_cwd(dir) then
 				match = true
 			end
 		end
