@@ -47,6 +47,7 @@ local function substring_of_cwd(directory)
 	require("josh.plugins")
 	local Path = require("plenary.path")
 	-- Create a Path object for the given directory
+	-- Just creates a path object, does not create anything else
 	local given_path = Path:new(directory)
 	-- Get the current working directory
 	local cwd_path = Path:new(vim.loop.cwd())
@@ -64,7 +65,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 	callback = function()
 		require("josh.plugins.formatting")
 		-- Add directories here
-		local dirs = { "~/Documents/VSCode/EECS482/p2-thread-library" }
+		local dirs = { "~/Documents/VSCode/EECS482/p2-thread-library", "~/class/eecs482/p2" }
 
 		local match = false
 		for _, dir in ipairs(dirs) do
