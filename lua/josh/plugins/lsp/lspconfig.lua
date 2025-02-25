@@ -99,28 +99,39 @@ return {
 								callSnippet = "Replace",
 							},
 						},
-						Verible = {
-							filetypes = { "verilog", "systemverilog" }, -- Enable for both Verilog and SystemVerilog
-							-- root_dir = function(fname)
-							-- 	return lspconfig.util.root_pattern(".git")(fname)
-							-- 		or lspconfig.util.root_pattern("verilog_project_root")(fname)
-							-- 		or lspconfig.util.path.dirname(fname)
-							-- end,
-						},
 					},
 				})
 			end,
-
-			lspconfig["verible"].setup({
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						root_dir = function()
-							return vim.loop.cwd()
-						end,
+			["matlab_ls"] = function()
+				-- configure lua server (with special settings)
+				lspconfig["matlab_ls"].setup({
+					capabilities = capabilities,
+					filetypes = { "matlab" },
+					root_dir = function(fname)
+						-- local filepath = vim.api.nvim_buf_get_name(0)
+						local directory = vim.fn.fnamemodify(fname, ":h")
+						return directory
+					end,
+					settings = {
+						matlab = {
+							indexWorkspace = true,
+							installPath = "/Applications/MATLAB_R2022a.app",
+							matlabConnectionTiming = "onStart",
+							telemetry = false,
+						},
 					},
-				},
-			}),
+					single_file_support = true,
+				})
+			end,
+
+			["verible"] = function()
+				lspconfig["verible"].setup({
+					capabilities = capabilities,
+					root_dir = function()
+						return vim.loop.cwd()
+					end,
+				})
+			end,
 		})
 	end,
 }

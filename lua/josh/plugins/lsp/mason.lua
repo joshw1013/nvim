@@ -37,6 +37,7 @@ return {
 				"bashls",
 				"verible",
 				"jinja_lsp",
+				"matlab_ls",
 			},
 		})
 
