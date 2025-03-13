@@ -79,8 +79,11 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 			-- print("FormatDisable")
 			vim.cmd("FormatDisable")
 		else
-			vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
-			vim.opt.shiftwidth = 2 -- 2 spaces for indent width
+			local filetype = vim.bo.filetype
+			if filetype ~= "python" then -- We want tab size of 4 for python
+				vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+				vim.opt.shiftwidth = 2 -- 2 spaces for indent width
+			end
 			-- print("FormatEnable")
 			vim.cmd("FormatEnable")
 		end

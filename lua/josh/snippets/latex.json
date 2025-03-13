@@ -156,21 +156,33 @@
   "Begin Magnitude": {
     "prefix": ["mg", "mag"],
     "body": ["||$1||"],
-    "descripiton": "Enter magnitude"
+    "descripiton": "Enter magnitude",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Make Infinity": {
     "prefix": ["if"],
     "body": ["\\infty"],
-    "descripiton": "Make infinity"
+    "descripiton": "Make infinity",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Begin Integral": {
     "prefix": ["in", "int"],
     "body": ["\\int_{$1}^{$2}"],
-    "descripiton": "Begin integral"
+    "descripiton": "Begin integral",
+    "luasnip": {
+      "priority": 2000
+    }
   },
   "Begin Text": {
     "prefix": ["te"],
     "body": ["\\text{$1}"],
-    "descripiton": "Begin text"
+    "descripiton": "Begin text",
+    "luasnip": {
+      "priority": 2000
+    }
   }
 }
