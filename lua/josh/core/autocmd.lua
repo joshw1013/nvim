@@ -65,7 +65,11 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 	callback = function()
 		require("josh.plugins.formatting")
 		-- Add directories here
-		local dirs = { "~/Documents/VSCode/EECS482/p2-thread-library", "~/class/eecs482/p2" }
+		local dirs = {
+			"~/Documents/VSCode/EECS482/p2-thread-library",
+			"~/class/eecs482/p2",
+			"~/Documents/VSCode/EECS482/p3-memory-management",
+		}
 
 		local match = false
 		for _, dir in ipairs(dirs) do
