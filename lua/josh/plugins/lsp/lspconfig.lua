@@ -78,6 +78,25 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		local function get_matlab_install_path()
+			local home = os.getenv("HOME") or ""
+			local possible_paths = {
+				"/Applications/MATLAB_R2022a.app",
+				"/mnt/c/Program Files/MATLAB/R2022b",
+				-- home,
+			}
+
+			for _, path in ipairs(possible_paths) do
+				if vim.fn.isdirectory(path) == 1 then
+					return path
+				end
+			end
+
+			print("MATLAB installation not found in predefined paths.")
+			return nil
+		end
+		get_matlab_install_path()
+
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers
 			function(server_name)
@@ -115,7 +134,7 @@ return {
 					settings = {
 						matlab = {
 							indexWorkspace = true,
-							installPath = "/Applications/MATLAB_R2022a.app",
+							installPath = get_matlab_install_path(),
 							matlabConnectionTiming = "onStart",
 							telemetry = false,
 						},
