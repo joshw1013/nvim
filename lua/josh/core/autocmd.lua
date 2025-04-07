@@ -69,6 +69,9 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 			"~/Documents/VSCode/EECS482/p2-thread-library",
 			"~/class/eecs482/p2",
 			"~/Documents/VSCode/EECS482/p3-memory-management",
+			"~/class/eecs482/p3",
+			"~/Documents/VSCode/EECS482/p4-network-file-server",
+			"~/class/eecs482/p4",
 		}
 
 		local match = false
