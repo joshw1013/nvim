@@ -39,6 +39,24 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.scrolloff = 8
 opt.autoread = true
 
+-- Temporary fix to get clipboard working in wsl
+-- For some reason it was using cb instead which was not connected to Window clipboard
+W = require("josh.helper.wsl_check")
+if W.is_wsl() then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		},
+		cache_enabled = 0,
+	}
+end
+
 -- opt.pumheight = 10 -- Completion height
 
 -- turn off swapfile
