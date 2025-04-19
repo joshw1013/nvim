@@ -1,7 +1,5 @@
 return {
-	-- "nvim-lualine/lualine.nvim",
-	-- Use forked for now
-	"joshw1013/lualine.nvim",
+	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local lualine = require("lualine")
