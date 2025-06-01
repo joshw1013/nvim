@@ -57,6 +57,11 @@ if W.is_wsl() then
 	}
 end
 
+vim.diagnostic.config({
+	virtual_text = { severity_min = vim.diagnostic.severity.WARN },
+	-- virtual_line = true, -- Might want to swap between the two
+})
+
 -- opt.pumheight = 10 -- Completion height
 
 -- turn off swapfile

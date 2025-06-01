@@ -4,14 +4,10 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
 
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -53,11 +49,7 @@ return {
 				opts.desc = "Show line diagnostics"
 				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+				vim.diagnostic.config({ jump = { float = true } }) -- Add floating window when jumping dianostics
 
 				opts.desc = "Show documentation for what is under cursor"
 				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -92,64 +84,53 @@ return {
 				end
 			end
 
-			print("MATLAB installation not found in predefined paths.")
+			-- print("MATLAB installation not found in predefined paths.")
 			return nil
 		end
 		get_matlab_install_path()
 
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
-			["matlab_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["matlab_ls"].setup({
-					capabilities = capabilities,
-					filetypes = { "matlab" },
-					root_dir = function(fname)
-						-- local filepath = vim.api.nvim_buf_get_name(0)
-						local directory = vim.fn.fnamemodify(fname, ":h")
-						return directory
-					end,
-					settings = {
-						matlab = {
-							indexWorkspace = true,
-							installPath = get_matlab_install_path(),
-							matlabConnectionTiming = "onStart",
-							telemetry = false,
-						},
-					},
-					single_file_support = true,
-				})
-			end,
+		-- Set the capabilites to all LSP (vim.lsp.config does deep merging)
+		-- lspconfig takes precedence over global config / capabilities
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
 
-			["verible"] = function()
-				lspconfig["verible"].setup({
-					capabilities = capabilities,
-					root_dir = function()
-						return vim.loop.cwd()
-					end,
-				})
+		-- Custom settings for specific LSP. These take the highest precedence
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					-- make the language server recognize "vim" global
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("matlab_ls", {
+			filetypes = { "matlab" },
+			root_dir = function(fname)
+				-- local filepath = vim.api.nvim_buf_get_name(0)
+				local directory = vim.fn.fnamemodify(fname, ":h")
+				return directory
+			end,
+			settings = {
+				matlab = {
+					indexWorkspace = true,
+					installPath = get_matlab_install_path(),
+					matlabConnectionTiming = "onStart",
+					telemetry = false,
+				},
+			},
+			single_file_support = true,
+		})
+
+		vim.lsp.config("verible", {
+			root_dir = function()
+				return vim.loop.cwd()
 			end,
 		})
 	end,
