@@ -1,0 +1,66 @@
+-- function GetAndShowCurrentFunction()
+--   -- Get the current buffer handle
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   -- Get current cursor position (0-indexed for LSP)
+--   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+--
+--   -- Parameters for document_symbol, specifying the current buffer
+--   local params = vim.lsp.util.make_position_params(vim.api.nvim_get_current_win(), {bufnr = bufnr})
+--
+--   -- Asynchronously request document symbols
+--   vim.lsp.buf_request(bufnr, 'textDocument/documentSymbol', params, function(err, result, ctx, config)
+--     if err then
+--       vim.notify("LSP error getting document symbols: " .. tostring(err), vim.log.levels.ERROR)
+--       return
+--     end
+--
+--     if not result or #result == 0 then
+--       vim.notify("No document symbols found by LSP.", vim.log.levels.WARN)
+--       return
+--     end
+--
+--     local current_symbol_name = nil
+--     local smallest_range_size = math.huge
+--
+--     -- Recursive function to search through symbols and their children
+--     local function find_enclosing_symbol(symbols, current_row)
+--       for _, symbol in ipairs(symbols) do
+--         -- LSP ranges are 0-indexed:
+--         -- symbol.range is the full range of the symbol (declaration + body)
+--         -- symbol.selectionRange is usually just the name/identifier
+--         local symbol_range = symbol.location and symbol.location.range or symbol.range -- Handle DocumentSymbol vs SymbolInformation
+--
+--         if symbol_range then
+--           local start_line = symbol_range.start.line
+--           local end_line = symbol_range.end.line
+--
+--           -- Check if the cursor is within this symbol's range
+--           if current_row >= start_line and current_row <= end_line then
+--             local current_range_size = (end_line - start_line)
+--             -- We want the smallest (most specific) enclosing symbol
+--             if current_range_size < smallest_range_size then
+--               smallest_range_size = current_range_size
+--               current_symbol_name = symbol.name
+--             end
+--
+--             -- If this symbol has children, recurse to find a more specific match
+--             if symbol.children and #symbol.children > 0 then
+--               find_enclosing_symbol(symbol.children, current_row)
+--             end
+--           end
+--         end
+--       end
+--     end
+--
+--     find_enclosing_symbol(result, row) -- 'row' is the 0-indexed cursor line
+--
+--     if current_symbol_name then
+--       vim.notify("Current function/context: " .. current_symbol_name, vim.log.levels.INFO)
+--     else
+--       vim.notify("Could not determine current function context at this position.", vim.log.levels.WARN)
+--     end
+--   end)
+-- end
+--
+-- -- Your keymap would then call this new function
+-- vim.keymap.set('n', '<leader>fs', GetAndShowCurrentFunction, { noremap = true, silent = true, desc = "Show Current Function Name" })

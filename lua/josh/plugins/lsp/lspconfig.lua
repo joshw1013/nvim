@@ -89,6 +89,9 @@ return {
 		end
 		get_matlab_install_path()
 
+		-- Enable Dafny as that is not installed through Mason
+		vim.lsp.enable("dafny")
+
 		-- Set the capabilites to all LSP (vim.lsp.config does deep merging)
 		-- lspconfig takes precedence over global config / capabilities
 		vim.lsp.config("*", {
