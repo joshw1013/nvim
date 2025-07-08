@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "c", "cpp" }, -- Use filetypes instead of patterns here
+	pattern = { "c", "cpp", "dafny" }, -- Use filetypes instead of patterns here
 	callback = function()
 		vim.bo.commentstring = "// %s"
 	end,
@@ -95,4 +95,14 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 			vim.cmd("FormatEnable")
 		end
 	end,
+})
+
+-- Create an autocommand group to ensure the command is not duplicated
+vim.api.nvim_create_augroup("DafnyIndentSettings", { clear = true })
+
+-- When a Dafny file is opened, apply C-style indenting
+vim.api.nvim_create_autocmd("FileType", {
+	group = "DafnyIndentSettings",
+	pattern = "dafny",
+	command = "setlocal cindent",
 })

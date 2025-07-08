@@ -36,7 +36,7 @@ return {
 			-- Don't calculate root dir on specific directories
 			-- Ex: { "~/.cargo/*", ... }
 			-- TODO: Fix project.nvim so trialing / does not matter
-			exclude_dirs = { "~/.config/nvim/lua/josh/snippets" },
+			exclude_dirs = { "~/.config/nvim/lua/josh/snippets", "~/dotfiles/*" },
 
 			-- Path where project.nvim will store the project history for use in
 			-- telescope
