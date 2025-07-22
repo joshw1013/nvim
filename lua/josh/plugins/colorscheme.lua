@@ -45,7 +45,12 @@ return {
 		-- vim.cmd("colorscheme tokyonight")
 
 		-- Load the colorscheme here. Required to be after I create custom colorschemes
-		local colorscheme_manager = require("josh.helper.colorscheme_manager")
-		colorscheme_manager.load_last_colorscheme()
+		if not vim.g.started_by_firenvim then
+			local colorscheme_manager = require("josh.helper.colorscheme_manager")
+			colorscheme_manager.load_last_colorscheme()
+		else
+			vim.cmd("colorscheme default")
+			vim.o.background = "light"
+		end
 	end,
 }

@@ -62,6 +62,12 @@ vim.diagnostic.config({
 	-- virtual_line = true, -- Might want to swap between the two
 })
 
+if vim.g.started_by_firenvim == true then
+	vim.o.laststatus = 0
+else
+	vim.o.laststatus = 2
+end
+
 -- opt.pumheight = 10 -- Completion height
 
 -- turn off swapfile
