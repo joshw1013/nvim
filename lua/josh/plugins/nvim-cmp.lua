@@ -67,6 +67,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip", priority = 10 }, -- snippets
+				{ name = "render-markdown" },
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
 				{ name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
