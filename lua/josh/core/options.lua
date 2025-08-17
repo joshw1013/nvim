@@ -68,6 +68,12 @@ else
 	vim.o.laststatus = 2
 end
 
+-- Set folding method to indent (will be overrided by autocmd)
+vim.opt.foldmethod = "indent"
+
+-- Start with all folds open
+vim.opt.foldlevelstart = 99
+
 -- opt.pumheight = 10 -- Completion height
 
 -- turn off swapfile

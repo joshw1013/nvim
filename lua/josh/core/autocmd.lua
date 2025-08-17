@@ -106,3 +106,23 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "dafny",
 	command = "setlocal cindent",
 })
+
+local group = vim.api.nvim_create_augroup("SmartFolding", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = group,
+	pattern = "*",
+	callback = function()
+		-- Use a protected call to safely check for the parser
+		local success, parser = pcall(require, "nvim-treesitter.parsers")
+		-- get_parser() returns nil if no parser is found
+		local has_parser = success and parser.get_parser()
+
+		if has_parser then
+			vim.wo.foldmethod = "expr"
+			vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+		else
+			vim.wo.foldmethod = "indent"
+		end
+	end,
+})
