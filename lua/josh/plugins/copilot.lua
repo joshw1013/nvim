@@ -1,7 +1,7 @@
 return {
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",
-	event = "InsertEnter",
+	event = "BufEnter",
 	opts = {
 		panel = {
 			enabled = true,
@@ -25,7 +25,7 @@ return {
 			debounce = 75,
 			trigger_on_accept = true,
 			keymap = {
-				accept = "<M-l>",
+				accept = "<c-l>",
 				accept_word = false,
 				accept_line = false,
 				next = "<M-]>",
