@@ -112,11 +112,11 @@ local group = vim.api.nvim_create_augroup("SmartFolding", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	group = group,
 	pattern = "*",
-	callback = function()
+	callback = function(args)
 		-- Use a protected call to safely check for the parser
-		local success, parser = pcall(require, "nvim-treesitter.parsers")
 		-- get_parser() returns nil if no parser is found
-		local has_parser = success and parser.get_parser()
+		local success, parser = pcall(vim.treesitter.get_parser, args.buf)
+		local has_parser = success and parser
 
 		if has_parser then
 			vim.wo.foldmethod = "expr"
