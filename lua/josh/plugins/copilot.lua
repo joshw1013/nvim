@@ -55,7 +55,7 @@ return {
 		},
 		copilot_node_command = "node", -- Node.js version must be > 20
 		workspace_folders = {},
-		copilot_model = "GPT-5",
+		-- copilot_model = "GPT-5",
 		root_dir = function()
 			return vim.fs.dirname(vim.fs.find(".git", { upward = true })[1])
 		end,

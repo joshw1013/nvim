@@ -1,0 +1,5 @@
+[2025-09-07 22:34:29.952889 -04:00] INFO [src/cli/commands/manager.rs:176] Starting manager (network = global)
+[2025-09-07 22:34:29.953308 -04:00] ERROR [src/lib.rs:143] Failed to start manager
+
+Caused by:
+    No such file or directory (os error 2)

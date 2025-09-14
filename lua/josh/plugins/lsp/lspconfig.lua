@@ -6,6 +6,9 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
+		-- NOTE: Set this for debuging
+		vim.lsp.set_log_level("debug")
+
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
@@ -115,10 +118,10 @@ return {
 
 		vim.lsp.config("matlab_ls", {
 			filetypes = { "matlab" },
-			root_dir = function(fname)
+			root_dir = function(fname, on_dir)
 				-- local filepath = vim.api.nvim_buf_get_name(0)
 				local directory = vim.fn.fnamemodify(fname, ":h")
-				return directory
+				on_dir(directory)
 			end,
 			settings = {
 				matlab = {
@@ -132,8 +135,8 @@ return {
 		})
 
 		vim.lsp.config("verible", {
-			root_dir = function()
-				return vim.loop.cwd()
+			root_dir = function(_, on_dir)
+				on_dir(vim.loop.cwd())
 			end,
 		})
 	end,
