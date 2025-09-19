@@ -104,7 +104,12 @@ vim.api.nvim_create_augroup("DafnyIndentSettings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	group = "DafnyIndentSettings",
 	pattern = "dafny",
-	command = "setlocal cindent",
+	callback = function()
+		-- Temporarily turn this off
+		-- vim.cmd("setlocal cindent")
+		-- TODO: Fix this it is not fixing indenting with : in dafny
+		-- vim.cmd("setlocal indentkeys-=:")
+	end,
 })
 
 local group = vim.api.nvim_create_augroup("SmartFolding", { clear = true })
