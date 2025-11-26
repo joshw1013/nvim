@@ -95,6 +95,11 @@ return {
 		-- Enable Dafny as that is not installed through Mason
 		vim.lsp.enable("dafny")
 
+		-- Since zk is installed locally
+		-- NOTE: might want use this instead if I am getting errors
+		-- pcall(vim.lsp.enable, 'zk')
+		vim.lsp.enable("zk")
+
 		-- Set the capabilites to all LSP (vim.lsp.config does deep merging)
 		-- lspconfig takes precedence over global config / capabilities
 		vim.lsp.config("*", {

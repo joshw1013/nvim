@@ -17,6 +17,7 @@ return {
 
 			-- Manual mode doesn't automatically change your root directory, so you have
 			-- the option to manually do so using `:ProjectRoot` command.
+			-- Set to true for now
 			manual_mode = true,
 
 			-- Methods of detecting the root directory. **"lsp"** uses the native neovim
