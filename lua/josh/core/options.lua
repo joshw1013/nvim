@@ -79,3 +79,4 @@ vim.opt.foldlevelstart = 99
 -- turn off swapfile
 -- I will probably delete this
 -- opt.swapfile = false
+vim.cmd("filetype plugin on")
