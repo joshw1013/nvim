@@ -7,7 +7,7 @@ return {
 	},
 	config = function()
 		-- NOTE: Set this for debuging
-		vim.lsp.set_log_level("debug")
+		-- vim.lsp.set_log_level("debug")
 
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
