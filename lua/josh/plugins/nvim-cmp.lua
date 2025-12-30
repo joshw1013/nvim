@@ -50,9 +50,11 @@ return {
 				-- vim.keymap.set({ "i" }, "<C-K>", function()
 				-- luasnip.expand()
 				-- end, { silent = true }),
-				vim.keymap.set({ "i", "s" }, "<C-L>", function()
-					luasnip.jump(1)
-				end, { silent = true }),
+
+				-- NOTE: This is done in keymaps.lua so not needed here
+				-- vim.keymap.set({ "i", "s" }, "<C-L>", function()
+				-- 	luasnip.jump(1)
+				-- end, { silent = true }),
 				vim.keymap.set({ "i", "s" }, "<C-H>", function()
 					luasnip.jump(-1)
 				end, { silent = true }),
@@ -81,5 +83,19 @@ return {
 				}),
 			},
 		})
+
+		-- When the completion menu is open, hide copilot suggestions
+		cmp.event:on("menu_opened", function()
+			vim.b.copilot_suggestion_hidden = true
+		end)
+
+		cmp.event:on("menu_closed", function()
+			vim.b.copilot_suggestion_hidden = false
+			-- Make sure to not accidently load copilot
+			if package.loaded["copilot.suggestion"] then
+				require("copilot.suggestion").dismiss() -- Clear any stale hidden state
+				require("copilot.suggestion").next() -- Fetch/Show the suggestion
+			end
+		end)
 	end,
 }

@@ -19,7 +19,8 @@ return {
 		"ravitemer/mcphub.nvim",
 	},
 	keys = {
-		{ "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Toggle file explorer" },
-		{ mode = { "n", "x" }, "<leader>ci", "<cmd>CodeCompanion<CR>", desc = "Toggle file explorer" },
+		{ "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Toggle Chat" },
+		{ "<leader>ci", "<cmd>CodeCompanion<CR>", mode = "n", desc = "Inline Chat" },
+		{ "<leader>ci", ":'<,'>CodeCompanion<CR>", mode = "x", desc = "Inline Chat (Selection)" },
 	},
 }

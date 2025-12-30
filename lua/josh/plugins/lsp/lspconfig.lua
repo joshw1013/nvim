@@ -95,6 +95,9 @@ return {
 		-- Enable Dafny as that is not installed through Mason
 		vim.lsp.enable("dafny")
 
+		-- Enable sourcekit for Swift support
+		vim.lsp.enable("sourcekit")
+
 		-- Since zk is installed locally
 		-- NOTE: might want use this instead if I am getting errors
 		-- pcall(vim.lsp.enable, 'zk')
@@ -145,4 +148,13 @@ return {
 			end,
 		})
 	end,
+
+	vim.lsp.config("sourcekit", {
+		-- cmd = { "xcrun", "sourcekit-lsp" },
+		cmd = { "sourcekit-lsp" },
+		filetypes = { "swift", "objc", "objcpp" },
+		-- root_dir = function(_, on_dir)
+		-- 	on_dir(vim.loop.cwd())
+		-- end,
+	}),
 }

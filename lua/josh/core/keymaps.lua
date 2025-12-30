@@ -44,3 +44,15 @@ keymap.set("n", "<leader>me", "<cmd>FormatEnable<CR>", { desc = "Enable Automati
 keymap.set("n", "<leader>md", "<cmd>FormatDisable<CR>", { desc = "Disable Automatic Formatting" }) --  Don't run autocmds when saving
 -- TODO: Figure out what to do with this
 -- keymap.set("n", "<leader>cc", "<cmd>TSContextToggle<CR>", { desc = "Toggle TS Context" }) --  Toggle treesitter context
+
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
+	-- These won't affect lazy loading as they are inside the function
+	local luasnip = require("luasnip")
+	local copilot_suggestion = require("copilot.suggestion")
+
+	if copilot_suggestion.is_visible() then
+		copilot_suggestion.accept()
+	elseif luasnip.jumpable(1) then
+		luasnip.jump(1)
+	end
+end, { desc = "Copilot Accept -> Snippet Jump", silent = true })

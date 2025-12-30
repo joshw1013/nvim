@@ -1,10 +1,28 @@
 return {
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",
-	event = "BufEnter",
+	keys = {
+		{
+			"<leader>ce",
+			function()
+				-- Trigger the toggle logic. This function runs AFTER the plugin loads.
+				local client = require("copilot.client")
+				local command = require("copilot.command")
+
+				if client.is_disabled() then
+					command.enable()
+					print("Copilot: Enabled")
+				else
+					command.disable()
+					print("Copilot: Disabled")
+				end
+			end,
+			desc = "Toggle Copilot (Enable/Disable)",
+		},
+	},
 	opts = {
 		panel = {
-			enabled = true,
+			enabled = false,
 			auto_refresh = false,
 			keymap = {
 				jump_prev = "[[",
@@ -20,12 +38,12 @@ return {
 		},
 		suggestion = {
 			enabled = true,
-			auto_trigger = false,
-			hide_during_completion = true,
+			auto_trigger = true,
+			hide_during_completion = true, -- Completion menu is always opened so probably not good
 			debounce = 75,
 			trigger_on_accept = true,
 			keymap = {
-				accept = "<c-l>",
+				accept = false, -- Have custom logic for this in keymaps.lua
 				accept_word = false,
 				accept_line = false,
 				next = "<M-]>",
@@ -78,4 +96,9 @@ return {
 		},
 		server_opts_overrides = {},
 	},
+	config = function(_, opts)
+		require("copilot").setup(opts)
+		local command = require("copilot.command")
+		command.disable()
+	end,
 }

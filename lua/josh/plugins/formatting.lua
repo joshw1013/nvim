@@ -25,6 +25,7 @@ return {
 				latex = { "latexindent" },
 				verilog = { "verible" },
 				dafny = { "dafny format" },
+				swift = { "swiftformat" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable

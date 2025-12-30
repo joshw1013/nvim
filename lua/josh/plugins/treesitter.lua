@@ -6,6 +6,21 @@ return {
 		"windwp/nvim-ts-autotag",
 	},
 	config = function()
+		-- Import the internal parser module
+		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+		-- Local swift parser
+		parser_config.swift = {
+			install_info = {
+				-- Use expand to ensure the path is absolute
+				url = vim.fn.expand("~/.config/nvim/parsers/tree-sitter-swift"),
+				files = { "src/parser.c", "src/scanner.c" },
+				-- Skip the generation step (downloaded the files)
+				requires_generate_from_grammar = false,
+			},
+			filetype = "swift",
+		}
+
 		-- import nvim-treesitter plugin
 		local treesitter = require("nvim-treesitter.configs")
 
@@ -20,7 +35,7 @@ return {
 			auto_install = true,
 
 			-- List of parsers to ignore installing (or "all")
-			ignore_install = {},
+			ignore_install = { "swift" },
 
 			modules = {},
 
