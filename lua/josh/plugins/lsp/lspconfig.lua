@@ -98,10 +98,10 @@ return {
 		-- Enable sourcekit for Swift support
 		vim.lsp.enable("sourcekit")
 
-		-- Since zk is installed locally
+		-- Don't need any of this as it is done through the zk plugin
 		-- NOTE: might want use this instead if I am getting errors
 		-- pcall(vim.lsp.enable, 'zk')
-		vim.lsp.enable("zk")
+		-- vim.lsp.enable("zk")
 
 		-- Set the capabilites to all LSP (vim.lsp.config does deep merging)
 		-- lspconfig takes precedence over global config / capabilities
