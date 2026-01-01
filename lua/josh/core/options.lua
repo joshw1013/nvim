@@ -57,6 +57,21 @@ if W.is_wsl() then
 	}
 end
 
+-- Use this so that copy / paste is forwarded through ssh connections
+if os.getenv("SSH_CONNECTION") then
+	local function copy(lines, _)
+		require("vim.ui.clipboard.osc52").copy("+")(lines)
+	end
+	local function paste()
+		return { require("vim.ui.clipboard.osc52").paste("+")(), "" }
+	end
+	vim.g.clipboard = {
+		name = "osc52",
+		copy = { ["+"] = copy, ["*"] = copy },
+		paste = { ["+"] = paste, ["*"] = paste },
+	}
+end
+
 vim.diagnostic.config({
 	virtual_text = { severity_min = vim.diagnostic.severity.WARN },
 	-- virtual_line = true, -- Might want to swap between the two
