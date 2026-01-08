@@ -42,8 +42,8 @@ keymap.set({ "n", "v", "x", "s" }, "<leader>p", '"+p', { desc = "Paste from syst
 keymap.set("n", "<leader>nw", "<cmd>noa w<CR>", { desc = "Save without formatter" }) --  Don't run autocmds when saving
 keymap.set("n", "<leader>me", "<cmd>FormatEnable<CR>", { desc = "Enable Automatic Formatting" }) --  Don't run autocmds when saving
 keymap.set("n", "<leader>md", "<cmd>FormatDisable<CR>", { desc = "Disable Automatic Formatting" }) --  Don't run autocmds when saving
--- TODO: Figure out what to do with this
--- keymap.set("n", "<leader>cc", "<cmd>TSContextToggle<CR>", { desc = "Toggle TS Context" }) --  Toggle treesitter context
+-- Might want to change this keymap
+keymap.set("n", "<leader>tc", "<cmd>TSContextToggle<CR>", { desc = "Toggle TS Context" }) --  Toggle treesitter context
 
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
 	-- These won't affect lazy loading as they are inside the function
