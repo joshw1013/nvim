@@ -58,7 +58,7 @@ if W.is_wsl() then
 end
 
 -- Use this so that copy / paste is forwarded through ssh connections
-if os.getenv("SSH_CONNECTION") then
+if os.getenv("SSH_CONNECTION") or os.getenv("container") or vim.v.vim_did_enter == 1 then
 	local function copy(lines, _)
 		require("vim.ui.clipboard.osc52").copy("+")(lines)
 	end
