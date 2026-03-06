@@ -60,26 +60,14 @@ end
 -- Use this so that copy / paste is forwarded through ssh connections
 local is_remote = os.getenv("SSH_CONNECTION")
 	or os.getenv("container")
-	or os.getenv("APPTAINER_NAME")
+	or os.getenv("NVIM_IS_APPTAINER")
 	or vim.v.vim_did_enter == 1
 if is_remote then
-	local paste
-
-	if is_apptainer then
-		-- Apptainer's shared TTY swallows the OSC 52 response, causing a hang.
-		-- We return an empty string to instantly satisfy Neovim's read request.
-		paste_func = function()
-			return { "" }
-		end
-	else
-		-- Podman (-it) and standard SSH environments route the PTY correctly.
-		paste_func = function()
-			return { require("vim.ui.clipboard.osc52").paste("+")(), "" }
-		end
-	end
-
 	local function copy(lines, _)
 		require("vim.ui.clipboard.osc52").copy("+")(lines)
+	end
+	local function paste()
+		return { require("vim.ui.clipboard.osc52").paste("+")(), "" }
 	end
 	-- local function paste()
 	-- 	return { require("vim.ui.clipboard.osc52").paste("+")(), "" }
