@@ -72,6 +72,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 			"~/class/eecs482/p3",
 			"~/Documents/VSCode/EECS482/p4-network-file-server",
 			"~/class/eecs482/p4",
+			"~/eecs472/final",
 		}
 
 		local match = false
@@ -84,7 +85,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 			vim.opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
 			vim.opt.shiftwidth = 4 -- 4 spaces for indent width
 			-- print("FormatDisable")
-			vim.cmd("FormatDisable")
+			-- vim.cmd("FormatDisable")
 		else
 			local filetype = vim.bo.filetype
 			if filetype ~= "python" then -- We want tab size of 4 for python
@@ -92,7 +93,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 				vim.opt.shiftwidth = 2 -- 2 spaces for indent width
 			end
 			-- print("FormatEnable")
-			vim.cmd("FormatEnable")
+			-- vim.cmd("FormatEnable")
 		end
 	end,
 })
