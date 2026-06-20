@@ -26,6 +26,10 @@ return {
 
 		-- mason-lspconfig will automatically enable (vim.lsp.enable()) installed servers by default
 		mason_lspconfig.setup({
+			-- stylua 2.0.2 doesn't support --lsp; exclude it so conform handles formatting instead
+			automatic_enable = {
+				exclude = { "stylua" },
+			},
 			-- list of servers for mason to install
 			ensure_installed = {
 				"ts_ls",

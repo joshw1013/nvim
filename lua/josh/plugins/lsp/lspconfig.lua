@@ -147,14 +147,14 @@ return {
 				on_dir(vim.loop.cwd())
 			end,
 		})
-	end,
 
-	vim.lsp.config("sourcekit", {
-		-- cmd = { "xcrun", "sourcekit-lsp" },
-		cmd = { "sourcekit-lsp" },
-		filetypes = { "swift", "objc", "objcpp" },
-		-- root_dir = function(_, on_dir)
-		-- 	on_dir(vim.loop.cwd())
-		-- end,
-	}),
+		vim.lsp.config("sourcekit", {
+			-- cmd = { "xcrun", "sourcekit-lsp" },
+			cmd = { "sourcekit-lsp" },
+			filetypes = { "swift", "objc", "objcpp" },
+			-- root_dir = function(_, on_dir)
+			-- 	on_dir(vim.loop.cwd())
+			-- end,
+		})
+	end,
 }

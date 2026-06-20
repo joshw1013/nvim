@@ -1,5 +1,7 @@
 return {
 	"zbirenbaum/copilot.lua",
+	-- NOTE: Event is used to start enabled, plus bottom of file has to be commented for this
+	-- event = { "BufReadPost", "BufNewFile" }, -- Add now so it does autostart
 	cmd = "Copilot",
 	keys = {
 		{
@@ -98,6 +100,7 @@ return {
 	},
 	config = function(_, opts)
 		require("copilot").setup(opts)
+		-- NOTE: Turns these on if you want to start disabled
 		local command = require("copilot.command")
 		command.disable()
 	end,

@@ -73,6 +73,8 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 			"~/Documents/VSCode/EECS482/p4-network-file-server",
 			"~/class/eecs482/p4",
 			"~/eecs472/final",
+			"~/Documents/VSCode/EECS472/final",
+			"~/Documents/VSCode/EECS373/project",
 		}
 
 		local match = false

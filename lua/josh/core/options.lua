@@ -39,6 +39,9 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.scrolloff = 8
 opt.autoread = true
 
+-- Prevent random bugs
+opt.modeline = false
+
 -- Temporary fix to get clipboard working in wsl
 -- For some reason it was using cb instead which was not connected to Window clipboard
 W = require("josh.helper.wsl_check")
