@@ -85,17 +85,17 @@ return {
 		})
 
 		-- When the completion menu is open, hide copilot suggestions
-		cmp.event:on("menu_opened", function()
-			vim.b.copilot_suggestion_hidden = true
-		end)
-
-		cmp.event:on("menu_closed", function()
-			vim.b.copilot_suggestion_hidden = false
-			-- Make sure to not accidently load copilot
-			if package.loaded["copilot.suggestion"] then
-				require("copilot.suggestion").dismiss() -- Clear any stale hidden state
-				require("copilot.suggestion").next() -- Fetch/Show the suggestion
-			end
-		end)
+		-- cmp.event:on("menu_opened", function()
+		-- 	vim.b.copilot_suggestion_hidden = true
+		-- end)
+		--
+		-- cmp.event:on("menu_closed", function()
+		-- 	vim.b.copilot_suggestion_hidden = false
+		-- 	-- Make sure to not accidently load copilot
+		-- 	if package.loaded["copilot.suggestion"] then
+		-- 		require("copilot.suggestion").dismiss() -- Clear any stale hidden state
+		-- 		require("copilot.suggestion").next() -- Fetch/Show the suggestion
+		-- 	end
+		-- end)
 	end,
 }

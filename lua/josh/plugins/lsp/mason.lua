@@ -43,6 +43,7 @@ return {
 				"verible",
 				"jinja_lsp",
 				"matlab_ls",
+				"gopls",
 			},
 		})
 
